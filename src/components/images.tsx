@@ -1,9 +1,15 @@
 import React from 'react'
+import { CustomComponentProps } from '../interfaces'
+import { mergeClassName } from '../utils';
 
-export const images = () => {
+interface Props extends CustomComponentProps{
+    src: string;
+}
+
+export const Images = (props: Props) => {
   return (
-    <div className='bg-primary'>
-
+    <div className= {mergeClassName('bg-primary w-full h-full', props.className )}>
+        <img src={props.src} className='w-full h-full' ></img>
     </div>
   )
 }
