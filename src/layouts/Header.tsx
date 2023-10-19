@@ -3,6 +3,7 @@ import { Container } from '../components/Container'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import {IoIosSearch} from 'react-icons/io'
 import { mergeClassName } from '../utils'
+import { SearchResult } from '../components/search-result'
 
 
 const MENU_CLASS = `
@@ -80,7 +81,7 @@ export const Header = () => {
         </div>
 
         {/* Search */}
-        <div className="border-b-[1.5px] border-white flex items-center p-1 flex-[0.5] focus-within:border-primary">
+        <div className="border-b-[1.5px] border-white flex items-center p-1 flex-[0.5] focus-within:border-primary relative">
             <input 
              onClick={(e) =>{
               e.stopPropagation()
@@ -94,6 +95,13 @@ export const Header = () => {
              value={keyword}
             />
             <IoIosSearch size={18}></IoIosSearch>
+            {/* Results */}
+            {
+               isSearchFocus ?(
+                 <SearchResult keyword={keyword} goToSearchPage={goToSearchPage}></SearchResult> 
+               ) : (
+                  ''
+               )}
         </div>
       </Container>
     </div>

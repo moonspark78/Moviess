@@ -7,7 +7,7 @@ interface Props{
     goToSearchPage: Function
 }
 
-export const SearchResult = () => {
+export const SearchResult = (props: Props) => {
     const [items, setItems] = useState<Film[]>([])
 
     const fetch = () =>{
@@ -38,7 +38,7 @@ export const SearchResult = () => {
     ">
         {
             items.map((film,i) => (
-                <div className="flex items-start p-1.5 rounded-lg hover:bg-primary cursor-pointer">
+                <div key={i} className="flex items-start p-1.5 rounded-lg hover:bg-primary cursor-pointer">
                     {/* images */}
                     <Images src="" className="h-[72px] w-[102px]"></Images>
                     {/* Title */}
