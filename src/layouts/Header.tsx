@@ -7,9 +7,10 @@ import { SearchResult } from '../components/search-result'
 
 
 const MENU_CLASS = `
-  px-3
-  py-1.5
+  px-1.5
+  py-1
   hover:bg-primary
+  mobile:px-6
 `
 const MENU_CLASS_ACTIVE = `
   bg-primary
@@ -21,12 +22,16 @@ export const Header = () => {
   const navigate = useNavigate()
   const [pathname, setPathname] = useState('')
   const pathnameRef = useRef('') 
+  const defaultKeyword = useRef('')
+
+
   const [keyword, setKeyword] = useState('')
   const [isSearchFocus, setSearchFocus] = useState(false)
   const searchRef = useRef<HTMLInputElement>(null)
 
   const goToSearchPage = () =>{
     if(keyword){
+      defaultKeyword.current = keyword
       navigate(`/search?q=${keyword}`)
       setSearchFocus(false)
       searchRef.current?.blur()
@@ -35,7 +40,7 @@ export const Header = () => {
 
   const initKeyword = () =>{
     if(pathnameRef.current == '/search'){
-      setKeyword(params.get('q') || '')
+      setKeyword(defaultKeyword.current)
     } else {
       setKeyword('')
     }
@@ -56,11 +61,15 @@ export const Header = () => {
   useEffect(() =>{
     setPathname(location.pathname)
     pathnameRef.current = location.pathname
+    defaultKeyword.current = params.get('q') || ''
     initKeyword()
   }, [location.pathname])
 
   useEffect(() =>{
-    window.addEventListener('click', ()=> onWindowClick())
+    window.addEventListener('click', onWindowClick)
+    return () =>{
+      window.removeEventListener('click', onWindowClick)
+    }
   }, [])
 
 
@@ -74,7 +83,7 @@ export const Header = () => {
             <Link to={'/'}>MovieList</Link>
           </h1>
           {/* Menu */}
-          <div className="pt-1.5 flex items-center gap-1.5">
+          <div className="pt-1.5 flex items-center gap-1.5 mobile:fixed mobile:bottom-0 mobile:left-0 mobile:right-0 mobile:justify-center mobile:py-3 mobile:bg-header mobile:gap-6">
             <Link className={getMenuClass('/movies')} to={'/movies'}>Movies</Link>
             <Link className={getMenuClass('/tv')} to={'/tv'}>Tv</Link>
           </div>

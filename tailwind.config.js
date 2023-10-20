@@ -9,6 +9,9 @@ module.exports = {
         primary: '#312f51',
         header: '#2a2841',
         body: '#25243a',
+      },
+      screens:{
+        'mobile': '768px'
       }
     },
   },

@@ -10,16 +10,18 @@ interface Props{
 export const SearchResult = (props: Props) => {
     const [items, setItems] = useState<Film[]>([])
 
+    const [totalItem, setTotalItem] = useState (6)
+
     const fetch = () =>{
         const arrs: Film[] = [];
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 6; i++) {
             arrs.push({
                 id: i,
                 title: "lorem",
                 description: "",
                 coverPath: "",
-                genreIds: [1,2,3,4,5],
+                genreIds: [1,2,3,4,5,6],
                 posterPath: "",
                 seasons: [],
             })
@@ -59,6 +61,16 @@ export const SearchResult = (props: Props) => {
                 </div>
             ))
         }
+
+        {
+            totalItem > 5 ?(
+
+            <button onClick={() => props.goToSearchPage()} className="px-3 py-1.5 bg-primary w-full hover:text-body">More results</button> 
+            ) : (
+                ''
+            )
+        }
+
     </div>
   )
 }
