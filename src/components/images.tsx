@@ -6,10 +6,10 @@ interface Props extends CustomComponentProps{
     src: string;
 }
 
-export const Images = (props: Props) => {
+export const Image = (props: Props) => {
   return (
-    <div className= {mergeClassName('bg-primary w-full h-full', props.className )}>
-        <img src={props.src} className='w-full h-full' ></img>
+    <div className= {mergeClassName('bg-primary ', props.className )}>
+        <img src={props.src} className='h-[72px] w-[102px]' ></img>
     </div>
   )
 }

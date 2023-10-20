@@ -87,7 +87,7 @@ export const Header = () => {
               e.stopPropagation()
               setSearchFocus(true)
              }}
-             onKeyDown={e => e.key == 'Enter' ? goToSearchPage() : ''}
+             onKeyDown={e => e.key === 'Enter' ? goToSearchPage() : ''}
              type="text" 
              className='bg-transparent outline-0 flex-1' 
              placeholder='Search...' 
