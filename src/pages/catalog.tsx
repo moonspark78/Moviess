@@ -1,7 +1,11 @@
-import React from 'react'
+import { MediaType } from "../types"
 
-export const Catalog = () => {
+interface Props{
+    type: MediaType | 'search'
+}
+
+export const Catalog = (props: Props) => {
   return (
-    <div>Catalog</div>
+    <div>{props.type}</div>
   )
 }

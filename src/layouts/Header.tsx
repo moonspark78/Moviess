@@ -39,7 +39,7 @@ export const Header = () => {
   }
 
   const initKeyword = () =>{
-    if(pathnameRef.current == '/search'){
+    if(pathnameRef.current === '/search'){
       setKeyword(defaultKeyword.current)
     } else {
       setKeyword('')
@@ -52,7 +52,7 @@ export const Header = () => {
   }
 
   const getMenuClass = (path: string) => {
-    if(path == pathname) {
+    if(path ===  pathname) {
       return mergeClassName(MENU_CLASS, MENU_CLASS_ACTIVE)
     }
     return mergeClassName (MENU_CLASS, '')
