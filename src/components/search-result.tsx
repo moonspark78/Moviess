@@ -72,6 +72,6 @@ export const SearchResult = (props: Props) => {
         }
 
     </div>
-  )
+  ) 
 }
  
