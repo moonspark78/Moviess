@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { Film } from '../interfaces';
-import Slider from 'react-slick';
+import {Slider} from '../components/slider/slider';
 import { Section } from '../components/section';
 import { TrendingHero } from '../components/trending-hero';
 
